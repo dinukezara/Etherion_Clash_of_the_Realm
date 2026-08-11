@@ -1,131 +1,224 @@
 # 🎮 Etherion: Clash of Realms
 
-**Etherion: Clash of Realms** is a turn-based RPG game written in Java. The game combines fast-paced elemental combat, strategic power selection, and player progression through mystical kingdoms.
-
----
+**Etherion: Clash of Realms** is a turn-based RPG developed in **Java**. The game combines elemental combat, strategic power selection, character upgrades, and player progression across mystical realms.
 
 ## 🧩 Game Overview
 
-- 🔥 Choose your elemental affinity: Fire, Water, Earth, or Air  
-- 🛡️ Battle unique villains in 12 epic missions  
-- 🧙‍♂️ Use special powers and equip shields to dominate your enemies  
-- 🛍️ Earn coins and buy new characters, powers, and shields  
-- 📈 Progress your player level and unlock harder challenges  
+Players begin their journey by choosing an elemental affinity and building their character for battle.
 
----
+- 🔥 Choose an elemental affinity: **Fire, Water, Earth, or Air**
+- ⚔️ Battle unique villains across **12 missions**
+- 🧙 Use special powers during combat
+- 🛡️ Equip shields to improve your defense
+- 🛒 Earn coins and purchase characters, powers, and shields
+- 📈 Level up and unlock increasingly difficult challenges
 
 ## 🏗️ Features
 
-- Turn-based combat system with dynamic damage calculation  
-- Character classes using Object-Oriented Design (OOP)  
-- Game data loaded from CSV files (Heroes, Villains, Powers, Shields, Missions)  
-- Save/Load game functionality with Java Serialization  
-- CLI-based menu system with battles, shop, and profile views  
-
----
+- Turn-based combat system
+- Dynamic damage calculation
+- Object-Oriented Programming (OOP) design
+- Multiple hero and villain characters
+- Elemental affinity system
+- Powers and shields
+- Player inventory and progression
+- In-game shop system
+- 12 mission-based battles
+- CSV-based game data
+- Save and load functionality using Java Serialization
+- CLI-based menus for battles, shop, and player profile
 
 ## 🗂️ Project Structure
 
-```bash
+```text
 Etherion_Clash_of_Realms/
-  ├── data/ # CSV files for game data (powers, shields, characters, etc.)
-  ├── src/
-  │ ├── Main.java # Game entry point
-  │ ├── GameEngine.java # Game menu, player creation, main loop
-  │ ├── Battle.java # Battle system logic
-  │ ├── Player.java # Player model with inventory, stats
-  │ ├── Character.java # Abstract base class
-  │ ├── HeroChar.java # Player-controlled characters
-  │ ├── Villain.java # Mission enemies
-  │ ├── Power.java # Powers with attack value and usage
-  │ ├── Shield.java # Shields with defense boost
-  │ └── GameDataLoader.java # Loads game data from CSV files
-  └── README.md
-
+│
+├── data/
+│   ├── Data_Heros.csv
+│   ├── Data_Villians.csv
+│   ├── Data_Mission.csv
+│   ├── Data_Powers.csv
+│   └── Data_Shields.csv
+│
+├── src/
+│   ├── Main.java
+│   ├── GameEngine.java
+│   ├── Battle.java
+│   ├── Player.java
+│   ├── Character.java
+│   ├── HeroChar.java
+│   ├── Villain.java
+│   ├── Power.java
+│   ├── Shield.java
+│   └── GameDataLoader.java
+│
+└── README.md
 ```
 
----
+### Main Classes
 
-
----
+| Class | Description |
+|---|---|
+| `Main.java` | Entry point of the game |
+| `GameEngine.java` | Handles menus, player creation, and the main game loop |
+| `Battle.java` | Contains the battle system logic |
+| `Player.java` | Stores player information, inventory, level, and stats |
+| `Character.java` | Abstract base class for game characters |
+| `HeroChar.java` | Represents player-controlled heroes |
+| `Villain.java` | Represents enemies encountered during missions |
+| `Power.java` | Represents combat powers and their attack values |
+| `Shield.java` | Represents shields and defensive bonuses |
+| `GameDataLoader.java` | Loads game information from CSV files |
 
 ## 🚀 Getting Started
 
-### ✅ Prerequisites
+### Prerequisites
 
-- Java JDK 17 or higher
-- A terminal or IDE (e.g. IntelliJ, Eclipse, VS Code)
+Make sure you have:
 
-### ▶️ How to Run
+- **Java JDK 17 or higher**
+- A terminal or Java-compatible IDE such as IntelliJ IDEA, Eclipse, or VS Code
+
+Check your Java installation:
 
 ```bash
-# Navigate into project directory
-cd Etherion_Clash_of_Realms
+java -version
+javac -version
+```
 
-# Compile
+## ▶️ Running the Game
+
+Clone the repository:
+
+```bash
+git clone https://github.com/dinukezara/Etherion_Clash_of_the_Realm.git
+```
+
+Navigate into the project:
+
+```bash
+cd Etherion_Clash_of_the_Realm
+```
+
+Compile the Java source files:
+
+```bash
 javac src/*.java
+```
 
-# Run the game
+Run the game:
+
+```bash
 java src/Main
 ```
----
-## 🧠 Damage Formula
-```bash
-  Damage = (AttackerAttack × PowerAttack × (1 + AttackerSpeed))  / (OpponentDefense + ShieldDefense + 10 × (1 - OpponentSpeed))
+
+> Depending on the package declarations used in the Java files, the run command may need to be adjusted.
+
+## ⚔️ Combat System
+
+Battles are turn-based and use character statistics, powers, shields, and speed to calculate damage.
+
+### Damage Formula
+
+```text
+Damage =
+(AttackerAttack × PowerAttack × (1 + AttackerSpeed))
+-----------------------------------------------------
+(OpponentDefense + ShieldDefense + 10 × (1 - OpponentSpeed))
 ```
-- All characters start with 100% HP.
-- Combat continues until one side’s health drops to 0.
-- Victory = Level up + coins; Defeat = lose 20% of spent coins.
----
+
+### Battle Rules
+
+- Characters begin battles with full HP.
+- Players select powers to attack opponents.
+- Shields increase defensive capability.
+- Combat continues until either the player or opponent reaches `0 HP`.
+- Winning battles rewards progression and coins.
+- Losing a battle results in a penalty.
 
 ## 🛒 Shop System
-  - Buy powers (up to 4 equipped at once)
-  - Unlock and buy shields based on level
-  - Upgrade to more powerful hero characters
 
---- 
+Coins earned during gameplay can be used in the shop.
 
-## 💾 Save/Load Support
- - The game state (player, inventory, level) is saved to savegame.dat using Java's Serializable mechanism.
- - Main Menu → Save Game to save progress
- - Main Menu → Load Game to resume
----
-## 📊 Data Files
-Located in /data:
-```bash
-  Data_Heros.csv
-  Data_Villians.csv
-  Data_Mission.csv
-  Data_Powers.csv
-  Data_Shields.csv
+Players can:
+
+- ⚡ Purchase new powers
+- 🎯 Equip up to **4 powers**
+- 🛡️ Purchase and unlock shields
+- 🧙 Upgrade to stronger hero characters
+- 🔓 Unlock items as their level increases
+
+## 💾 Save & Load System
+
+Game progress can be stored using **Java Serialization**.
+
+The saved game contains information such as:
+
+- Player details
+- Current level
+- Inventory
+- Purchased items
+- Player progression
+
+The game state is stored in:
+
+```text
+savegame.dat
 ```
-- All loaded via GameDataLoader.java.
+
+Use the following options from the main menu:
+
+```text
+Save Game → Save current progress
+Load Game → Continue from a previous save
+```
+
+## 📊 Game Data
+
+Game information is stored in CSV files inside the `data/` directory.
+
+```text
+Data_Heros.csv
+Data_Villians.csv
+Data_Mission.csv
+Data_Powers.csv
+Data_Shields.csv
+```
+
+These files are loaded into the game through:
+
+```text
+GameDataLoader.java
+```
+
+This approach separates game data from the main Java source code and makes the game's content easier to maintain.
+
+## 🛠️ Technologies & Tools
+
+- ☕ Java 17
+- 📄 CSV
+- 💾 Java Serialization
+- 🔀 Git
+- 🐙 GitHub
+- 🎨 Canva
+- 📐 Diagrams.net
+
+## 👤 Original Project Owner
+
+**Lakmana Thabrew**
+
+## 🤝 Contributors
+
+This repository may contain work from multiple contributors.
+
+Please refer to the GitHub repository's contributor history for individual contributions.
+
+## 📜 License & Usage
+
+This project was created for **academic and personal development purposes**.
+
+Please contact the project owner and relevant contributors before reusing, redistributing, or modifying their work.
 
 ---
 
-## 🙌 Owned By:
-  Lakmana Thabrew
----
-
-## 🛠 Tools Used
-  - Java 17
-  - Canva (for project planning & visual assets)
-  - Diagrams.net (for UML diagrams)
-  - Git & GitHub
-
-## 📜 License
-This project is for academic and personal development.
-Could you please contact the contributors for permission to reuse or modify their work?
-
-python
-Copy
-Edit
-
----
-
-Let me know if you'd like:
-- A GitHub Actions CI workflow for Java
-- `.gitignore` to include in the repo
-- Help creating a GitHub project board or issue templates
-
-### You're nearly done polishing this game into a solid open-source repo 👏
+⭐ **Etherion: Clash of Realms** — Battle, upgrade, and conquer the realms.
